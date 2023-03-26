@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import Button from '../Button/Button';
 import SingleData from '../SingleData/SingleData';
 
 const Card = () => {
 
     const [data,setData] = useState([]);
     const [showAll , setShowAll] = useState(false);
+
+    const handleShowAll =() =>{
+        setShowAll(true)
+    }
 
     useEffect( ()=>{
         const loadData = async () =>{
@@ -31,6 +36,16 @@ const Card = () => {
             data.slice(0, showAll ? 12 :6 ).map((singleData) =>(<SingleData singleData={singleData} key={singleData.id}/>))
           }
           </div>
+
+          {
+            !showAll && //sob data show korle showAll button hide hoia jabe
+            (
+             <span onClick={handleShowAll}>
+             <Button>See More</Button>
+             </span>
+            )
+          }
+          
         </>
     );
 };
