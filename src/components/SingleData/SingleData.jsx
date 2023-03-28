@@ -2,7 +2,13 @@ import React from 'react';
 
 const SingleData = (props) => {
     console.log(props.singleData);
-    const {image,features,published_in,name} =props.singleData;
+    const {id,image,features,published_in,name,setUniqueId} =props.singleData;
+
+    const handleId =(id) =>{
+        console.log(id);
+
+    }
+
     return (
    <div className="card w-full bg-base-100 shadow-2xl ">
     <figure><img className='w-full h-64' src={image} alt="Shoes" /></figure>
@@ -27,11 +33,13 @@ const SingleData = (props) => {
             <p>{published_in}</p>
         </div>
         <div>
-            <span className='cursor-pointer'>
+             {/* The button to open modal */}
+            <label onClick={() => props.setUniqueId(id)} htmlFor="my-modal-5" className='cursor-pointer'>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
              <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
             </svg>
-            </span>
+            </label>
+             
         </div>
         </div>
     </div>
